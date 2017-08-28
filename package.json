@@ -23,6 +23,9 @@
     "url": "https://github.com/irastypain/project-lvl1-s124/issues"
   },
   "homepage": "https://github.com/irastypain/project-lvl1-s124#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.7"
+  },
   "devDependencies": {
     "babel-cli": "^6.0.0",
     "babel-core": "^6.0.0",
