@@ -1,0 +1,23 @@
+{
+  "name": "brain-games-irastypain",
+  "version": "0.1.0",
+  "description": "This package is implementation of first project at Hexlet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irastypain/project-lvl1-s124.git"
+  },
+  "keywords": [
+    "braingames",
+    "hexlet"
+  ],
+  "author": "Ivan Rastyapin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/irastypain/project-lvl1-s124/issues"
+  },
+  "homepage": "https://github.com/irastypain/project-lvl1-s124#readme"
+}
