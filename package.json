@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/irastypain/project-lvl1-s124/issues"
   },
-  "homepage": "https://github.com/irastypain/project-lvl1-s124#readme"
+  "homepage": "https://github.com/irastypain/project-lvl1-s124#readme",
+  "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-core": "^6.0.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.0.0"
+  }
 }
