@@ -30,7 +30,11 @@
     "babel-cli": "^6.0.0",
     "babel-core": "^6.0.0",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-0": "^6.0.0"
+    "babel-preset-stage-0": "^6.0.0",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.7.0"
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
