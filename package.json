@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/irastypain/project-lvl1-s124#readme",
   "dependencies": {
-    "readline-sync": "^1.4.7"
+    "readline-sync": "^1.4.7",
+    "hexlet-pairs": "^1.0.5"
   },
   "devDependencies": {
     "babel-cli": "^6.0.0",
