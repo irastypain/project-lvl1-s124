@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
-import game from '../games/greeting';
+import { welcome, askUserName, greeting } from '..';
 
-game();
+console.log(`${welcome}\n`);
+const userName = askUserName();
+console.log(greeting(userName));
