@@ -1,5 +1,5 @@
 import { cons, car, cdr } from 'hexlet-pairs';
-import { runGame, askAnswer, printEmptyLine, YOU_WIN, GAME_OVER } from '..';
+import { runGame, askAnswer, victory, defeat } from '..';
 
 const makeQuestion = (question, answer) => cons(question, answer);
 const getText = question => car(question);
@@ -7,8 +7,6 @@ const getAnswer = question => cdr(question);
 const checkAnswer = (question, answer) => getAnswer(question) === answer;
 
 const generateNumber = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-
-const description = 'Answer "yes" if number even otherwise answer "no".';
 
 const generateQuestion = () => {
   const minNumber = 1;
@@ -19,17 +17,17 @@ const generateQuestion = () => {
   return makeQuestion(number, expectedAnswer);
 };
 
-// eslint-disable-next-line no-unused-vars
-const game = (userName) => {
+const description = 'Answer "yes" if number even otherwise answer "no".';
+
+const game = () => {
   const countQuestions = 3;
   const newStep = (passedQuestions) => {
     if (passedQuestions === countQuestions) {
-      return YOU_WIN;
+      return victory;
     }
 
     const question = generateQuestion();
-    printEmptyLine();
-    console.log(`Question: ${getText(question)}`);
+    console.log(`\nQuestion: ${getText(question)}`);
 
     const answer = askAnswer();
     if (checkAnswer(question, answer)) {
@@ -38,7 +36,7 @@ const game = (userName) => {
     }
 
     console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getAnswer(question)}'.`);
-    return GAME_OVER;
+    return defeat;
   };
 
   return newStep(0);
