@@ -14,7 +14,9 @@ export const congratulate = userName => `Congratulations, ${userName}!`;
 export const runGame = (description, game) => {
   console.log(welcome);
   console.log(`${description}\n`);
+
   const userName = askUserName();
+  console.log(greeting(userName));
 
   const outcomeGame = game();
   if (outcomeGame === victory) {
