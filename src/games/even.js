@@ -1,4 +1,4 @@
-import { generateNumber, makeQuestion, runGame } from '..';
+import { generateNumber, makeQA, runGame } from '..';
 
 export default () => {
   const description = 'Answer "yes" if number even otherwise answer "no".';
@@ -8,7 +8,7 @@ export default () => {
     const number = generateNumber(minNumber, maxNumber);
     const expectedAnswer = (number % 2) === 0 ? 'yes' : 'no';
 
-    return makeQuestion(number, expectedAnswer);
+    return makeQA(number, expectedAnswer);
   };
 
   runGame(description, generateQuestion);

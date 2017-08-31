@@ -1,5 +1,5 @@
 import { car, cdr, cons } from 'hexlet-pairs';
-import { generateNumber, makeQuestion, runGame } from '..';
+import { generateNumber, makeQA, runGame } from '..';
 
 const getRandomOperation = () => {
   const operations = [
@@ -22,7 +22,7 @@ export default () => {
     const operation = getRandomOperation();
     const expectedAnswer = cdr(operation)(firstNumber, secondNumber);
 
-    return makeQuestion(`${firstNumber} ${car(operation)} ${secondNumber}`, expectedAnswer);
+    return makeQA(`${firstNumber} ${car(operation)} ${secondNumber}`, expectedAnswer);
   };
 
   runGame(description, generateQuestion);

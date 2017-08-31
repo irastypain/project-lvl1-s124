@@ -11,7 +11,7 @@ const greeting = userName => `Hello, ${userName}!`;
 const losing = userName => `Let's try again, ${userName}!`;
 const congratulate = userName => `Congratulations, ${userName}!`;
 
-const makeQuestion = (question, answer) => cons(String(question), String(answer));
+const makeQA = (question, answer) => cons(String(question), String(answer));
 const getText = question => car(question);
 const getAnswer = question => cdr(question);
 
@@ -56,7 +56,7 @@ export {
   askUserName,
   generateNumber,
   greeting,
-  makeQuestion,
+  makeQA,
   runGame,
   welcome,
 };

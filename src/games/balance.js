@@ -1,4 +1,4 @@
-import { generateNumber, makeQuestion, runGame } from '..';
+import { generateNumber, makeQA, runGame } from '..';
 
 const balance = (number) => {
   const iter = (acc, sumDigits, countDigits) => {
@@ -23,7 +23,7 @@ export default () => {
     const number = generateNumber(minNumber, maxNumber);
     const expectedAnswer = balance(number);
 
-    return makeQuestion(number, expectedAnswer);
+    return makeQA(number, expectedAnswer);
   };
 
   runGame(description, generateQuestion);

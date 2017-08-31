@@ -1,4 +1,4 @@
-import { generateNumber, makeQuestion, runGame } from '..';
+import { generateNumber, makeQA, runGame } from '..';
 
 const gcd = (a, b) => {
   if (b === 0) {
@@ -17,7 +17,7 @@ export default () => {
     const secondNumber = generateNumber(minNumber, maxNumber);
     const expectedAnswer = gcd(firstNumber, secondNumber);
 
-    return makeQuestion(`${firstNumber} ${secondNumber}`, expectedAnswer);
+    return makeQA(`${firstNumber} ${secondNumber}`, expectedAnswer);
   };
 
   runGame(description, generateQuestion);
