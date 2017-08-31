@@ -1,6 +1,6 @@
 {
   "name": "brain-games-irastypain",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "This package is implementation of first project at Hexlet",
   "main": "index.js",
   "scripts": {
