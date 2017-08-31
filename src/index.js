@@ -6,9 +6,6 @@ const generateNumber = (min, max) => Math.floor(Math.random() * (max - min)) + m
 const askUserName = () => readlineSync.question('May I have your name? ');
 const askAnswer = () => readlineSync.question('Your answer: ');
 
-const victory = 'victory';
-const defeat = 'defeat';
-
 const welcome = 'Welcome to the Brain Games!';
 const greeting = userName => `Hello, ${userName}!`;
 const losing = userName => `Let's try again, ${userName}!`;
@@ -17,7 +14,6 @@ const congratulate = userName => `Congratulations, ${userName}!`;
 const makeQuestion = (question, answer) => cons(String(question), String(answer));
 const getText = question => car(question);
 const getAnswer = question => cdr(question);
-const checkAnswer = (question, answer) => getAnswer(question) === answer;
 
 const runGame = (description, generateQuestion) => {
   console.log(welcome);
@@ -29,30 +25,29 @@ const runGame = (description, generateQuestion) => {
   const playGame = (countRounds = 3) => {
     const newRound = (passedRounds) => {
       if (passedRounds === countRounds) {
-        return victory;
+        return true;
       }
 
       const question = generateQuestion();
       console.log(`\nQuestion: ${getText(question)}`);
 
       const answer = askAnswer();
-      if (checkAnswer(question, answer)) {
+      if (getAnswer(question) === answer) {
         console.log('Correct!');
         return newRound(passedRounds + 1);
       }
 
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getAnswer(question)}'.`);
-      return defeat;
+      return false;
     };
 
     return newRound(0);
   };
 
-  const outcomeGame = playGame();
-
-  if (outcomeGame === victory) {
+  const isVictory = playGame();
+  if (isVictory) {
     console.log(`\n${congratulate(userName)}`);
-  } else if (outcomeGame === defeat) {
+  } else {
     console.log(`\n${losing(userName)}`);
   }
 };
