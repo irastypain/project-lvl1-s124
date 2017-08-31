@@ -1,8 +1,7 @@
 import { generateNumber, makeQuestion, runGame } from '..';
 
-const description = 'Answer "yes" if number even otherwise answer "no".';
-
 export default () => {
+  const description = 'Answer "yes" if number even otherwise answer "no".';
   const generateQuestion = () => {
     const minNumber = 1;
     const maxNumber = 1000;
