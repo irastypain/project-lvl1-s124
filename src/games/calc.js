@@ -1,14 +1,14 @@
 import { car, cdr, cons } from 'hexlet-pairs';
 import { generateNumber, makeQuestion, runGame } from '..';
 
-const operations = [
-  cons('+', (a, b) => a + b),
-  cons('-', (a, b) => a - b),
-  cons('*', (a, b) => a * b),
-];
+const getRandomOperation = () => {
+  const operations = [
+    cons('+', (a, b) => a + b),
+    cons('-', (a, b) => a - b),
+    cons('*', (a, b) => a * b),
+  ];
+  const index = generateNumber(0, operations.length);
 
-const getRandomOperation = (ops) => {
-  const index = generateNumber(0, ops.length);
   return operations[index];
 };
 
@@ -19,7 +19,7 @@ export default () => {
     const maxNumber = 100;
     const firstNumber = generateNumber(minNumber, maxNumber);
     const secondNumber = generateNumber(minNumber, maxNumber);
-    const operation = getRandomOperation(operations);
+    const operation = getRandomOperation();
     const expectedAnswer = cdr(operation)(firstNumber, secondNumber);
 
     return makeQuestion(`${firstNumber} ${car(operation)} ${secondNumber}`, expectedAnswer);

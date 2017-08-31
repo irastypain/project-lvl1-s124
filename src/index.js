@@ -44,8 +44,8 @@ const runGame = (description, generateQuestion) => {
     return newRound(0);
   };
 
-  const isVictory = playGame();
-  if (isVictory) {
+  const userWon = playGame();
+  if (userWon) {
     console.log(`\n${congratulate(userName)}`);
   } else {
     console.log(`\n${losing(userName)}`);
