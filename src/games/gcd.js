@@ -1,24 +1,20 @@
-import { generateNumber, makeQA, runGame } from '..';
-
-const gcd = (a, b) => {
-  if (b === 0) {
-    return a;
-  }
-
-  return gcd(b, a % b);
-};
+import { runGame } from '..';
+import { makeQA } from '../lib/qa';
+import { getRandomInt, gcd } from '../lib/math';
 
 export default () => {
   const description = 'Find the greatest common divisor of given numbers.';
-  const generateQuestion = () => {
+  const generateQA = () => {
     const minNumber = 1;
     const maxNumber = 1000;
-    const firstNumber = generateNumber(minNumber, maxNumber);
-    const secondNumber = generateNumber(minNumber, maxNumber);
-    const expectedAnswer = gcd(firstNumber, secondNumber);
+    const firstNumber = getRandomInt(minNumber, maxNumber);
+    const secondNumber = getRandomInt(minNumber, maxNumber);
 
-    return makeQA(`${firstNumber} ${secondNumber}`, expectedAnswer);
+    const question = `${firstNumber} ${secondNumber}`;
+    const answer = gcd(firstNumber, secondNumber);
+
+    return makeQA(question, answer);
   };
 
-  runGame(description, generateQuestion);
+  runGame(description, generateQA);
 };

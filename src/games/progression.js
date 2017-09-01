@@ -1,26 +1,20 @@
-import { generateNumber, makeQA, runGame } from '..';
-
-const generateProgression = (a, d, countItems) => {
-  const iter = (progression, n) => {
-    if (n > countItems) {
-      return progression;
-    }
-    const nextItem = a + ((n - 1) * d);
-    return iter([...progression, nextItem], n + 1);
-  };
-  return iter([], 1);
-};
+import { runGame } from '..';
+import { makeQA } from '../lib/qa';
+import { getRandomInt, genArithmeticProgression } from '../lib/math';
 
 export default () => {
   const description = 'What number is missing in this progression?';
-  const generateQuestion = () => {
+  const generateQA = () => {
     const minNumber = 1;
     const maxNumber = 1000;
-    const startNumber = generateNumber(minNumber, maxNumber);
+    const startNumber = getRandomInt(minNumber, maxNumber);
+
     const gain = 2;
     const countItems = 10;
-    const progressionItems = generateProgression(startNumber, gain, countItems);
-    const missingItemIndex = generateNumber(0, countItems - 1);
+    const progressionItems = genArithmeticProgression(startNumber, gain, countItems);
+
+    const startIndex = 0;
+    const missingItemIndex = getRandomInt(startIndex, countItems - 1);
 
     const question = progressionItems.map((item, index) => {
       if (index === missingItemIndex) {
@@ -29,10 +23,10 @@ export default () => {
       return String(item);
     }).join(' ');
 
-    const expectedAnswer = progressionItems[missingItemIndex];
+    const answer = progressionItems[missingItemIndex];
 
-    return makeQA(question, expectedAnswer);
+    return makeQA(question, answer);
   };
 
-  runGame(description, generateQuestion);
+  runGame(description, generateQA);
 };

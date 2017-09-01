@@ -1,7 +1,5 @@
 import readlineSync from 'readline-sync';
-import { car, cdr, cons } from 'hexlet-pairs';
-
-const generateNumber = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+import { getQuestion, getAnswer } from './lib/qa';
 
 const askUserName = () => readlineSync.question('May I have your name? ');
 const askAnswer = () => readlineSync.question('Your answer: ');
@@ -11,11 +9,7 @@ const greeting = userName => `Hello, ${userName}!`;
 const losing = userName => `Let's try again, ${userName}!`;
 const congratulate = userName => `Congratulations, ${userName}!`;
 
-const makeQA = (question, answer) => cons(String(question), String(answer));
-const getText = question => car(question);
-const getAnswer = question => cdr(question);
-
-const runGame = (description, generateQuestion) => {
+const runGame = (description, generateQA) => {
   console.log(welcome);
   console.log(`${description}\n`);
 
@@ -28,16 +22,18 @@ const runGame = (description, generateQuestion) => {
         return true;
       }
 
-      const question = generateQuestion();
-      console.log(`\nQuestion: ${getText(question)}`);
+      const qa = generateQA();
+      console.log(`\nQuestion: ${getQuestion(qa)}`);
 
       const answer = askAnswer();
-      if (getAnswer(question) === answer) {
+      const correctAnswer = getAnswer(qa);
+
+      if (correctAnswer === answer) {
         console.log('Correct!');
         return newRound(passedRounds + 1);
       }
 
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${getAnswer(question)}'.`);
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       return false;
     };
 
@@ -54,9 +50,7 @@ const runGame = (description, generateQuestion) => {
 
 export {
   askUserName,
-  generateNumber,
   greeting,
-  makeQA,
   runGame,
   welcome,
 };

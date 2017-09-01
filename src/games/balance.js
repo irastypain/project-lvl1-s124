@@ -1,30 +1,19 @@
-import { generateNumber, makeQA, runGame } from '..';
-
-const balance = (number) => {
-  const iter = (acc, sumDigits, countDigits) => {
-    if (countDigits === 0) {
-      return acc;
-    }
-    const newDigit = Math.trunc(sumDigits / countDigits);
-    return iter([...acc, newDigit], sumDigits - newDigit, countDigits - 1);
-  };
-
-  const digits = Array.from(String(number), Number);
-  const sumDigits = digits.reduce((sum, digit) => sum + digit, 0);
-
-  return iter([], sumDigits, digits.length).join('');
-};
+import { runGame } from '..';
+import { makeQA } from '../lib/qa';
+import { getRandomInt, balanceInt } from '../lib/math';
 
 export default () => {
   const description = 'Balance the given number.';
-  const generateQuestion = () => {
+  const generateQA = () => {
     const minNumber = 1;
     const maxNumber = 10000;
-    const number = generateNumber(minNumber, maxNumber);
-    const expectedAnswer = balance(number);
+    const number = getRandomInt(minNumber, maxNumber);
 
-    return makeQA(number, expectedAnswer);
+    const question = `${number}`;
+    const answer = balanceInt(number);
+
+    return makeQA(question, answer);
   };
 
-  runGame(description, generateQuestion);
+  runGame(description, generateQA);
 };

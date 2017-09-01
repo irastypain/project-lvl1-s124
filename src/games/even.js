@@ -1,15 +1,19 @@
-import { generateNumber, makeQA, runGame } from '..';
+import { runGame } from '..';
+import { makeQA } from '../lib/qa';
+import { getRandomInt } from '../lib/math';
 
 export default () => {
   const description = 'Answer "yes" if number even otherwise answer "no".';
-  const generateQuestion = () => {
+  const generateQA = () => {
     const minNumber = 1;
     const maxNumber = 1000;
-    const number = generateNumber(minNumber, maxNumber);
-    const expectedAnswer = (number % 2) === 0 ? 'yes' : 'no';
+    const number = getRandomInt(minNumber, maxNumber);
 
-    return makeQA(number, expectedAnswer);
+    const question = `${number}`;
+    const answer = (number % 2) === 0 ? 'yes' : 'no';
+
+    return makeQA(question, answer);
   };
 
-  runGame(description, generateQuestion);
+  runGame(description, generateQA);
 };

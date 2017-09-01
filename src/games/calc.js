@@ -1,29 +1,22 @@
-import { car, cdr, cons } from 'hexlet-pairs';
-import { generateNumber, makeQA, runGame } from '..';
-
-const getRandomOperation = () => {
-  const operations = [
-    cons('+', (a, b) => a + b),
-    cons('-', (a, b) => a - b),
-    cons('*', (a, b) => a * b),
-  ];
-  const index = generateNumber(0, operations.length);
-
-  return operations[index];
-};
+import { car, cdr } from 'hexlet-pairs';
+import { runGame } from '..';
+import { makeQA } from '../lib/qa';
+import { getRandomInt, getRandomOperation } from '../lib/math';
 
 export default () => {
   const description = 'What is the result of the expression?';
-  const generateQuestion = () => {
+  const generateQA = () => {
     const minNumber = 1;
     const maxNumber = 100;
-    const firstNumber = generateNumber(minNumber, maxNumber);
-    const secondNumber = generateNumber(minNumber, maxNumber);
+    const firstNumber = getRandomInt(minNumber, maxNumber);
+    const secondNumber = getRandomInt(minNumber, maxNumber);
     const operation = getRandomOperation();
-    const expectedAnswer = cdr(operation)(firstNumber, secondNumber);
 
-    return makeQA(`${firstNumber} ${car(operation)} ${secondNumber}`, expectedAnswer);
+    const question = `${firstNumber} ${car(operation)} ${secondNumber}`;
+    const answer = cdr(operation)(firstNumber, secondNumber);
+
+    return makeQA(question, answer);
   };
 
-  runGame(description, generateQuestion);
+  runGame(description, generateQA);
 };
