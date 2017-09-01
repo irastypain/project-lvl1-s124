@@ -47,3 +47,27 @@ export const genArithmeticProgression = (a, d, countItems) => {
 
   return iter([], 1);
 };
+
+export const smallestDivisor = (number) => {
+  const nextDivisor = (divisor) => {
+    if (divisor === 2) {
+      return 3;
+    }
+    return divisor + 2;
+  };
+
+  const findDivisor = (testDivisor) => {
+    if ((testDivisor ** 2) > number) {
+      return number;
+    } else if ((number % testDivisor) === 0) {
+      return testDivisor;
+    }
+
+    return findDivisor(nextDivisor(testDivisor));
+  };
+
+  const startDivisor = 2;
+  return findDivisor(startDivisor);
+};
+
+export const isPrime = number => number === smallestDivisor(number);
